@@ -1,2 +1,2 @@
 <?php
-$api_url = 'http://localhost/toko/api';
+$api_url = 'http://localhost/toko-api/api';

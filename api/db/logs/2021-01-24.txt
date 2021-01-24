@@ -1,0 +1,14 @@
+Time : 21:52:02
+SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)
+
+Time : 21:52:00
+SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)
+
+Time : 21:51:48
+SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)
+
+Time : 21:45:59
+SQLSTATE[HY000] [1049] Unknown database 'db_toko'
+
+Time : 21:44:28
+SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
