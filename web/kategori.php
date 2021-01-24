@@ -58,24 +58,14 @@ include 'inc.php';
       $link_edit = '<a href="kategori-edit.php?cat_id=' . $arr['cat_id'] . '">[Edit]</a>';
       $link_delete = '<a href="javascript:void:;" onclick="deleteData(\'' . $arr['cat_id'] . '\')">[Delete]</a>';
 
-      // echo '
-      //       <tr>
-      //           <td>' . $no . '</td>
-      //           <td>' . $arr['cat_name'] . '</td>
-      //           <td>' . $arr['cat_description'] . '</td>
-      //           <td>' . date('d M Y H:i', strtotime($arr['cat_created'])) . '</td>
-      //           <td>' . date('d M Y H:i', strtotime($arr['cat_modified'])) . '</td>
-      //           <td>' . $link_edit . ' ' . $link_delete . '</td>
-      //       </tr>
-      //       ';
     ?>
       <tr>
         <td><?= $no; ?></td>
-        <td><?= $no; ?></td>
-        <td><?= $no; ?></td>
-        <td><?= $no; ?></td>
-        <td><?= $no; ?></td>
-        <td><?= $no; ?></td>
+        <td><?= $arr['cat_name']; ?></td>
+        <td><?= $arr['cat_description']; ?></td>
+        <td><?= date('d M Y H:i', strtotime($arr['cat_created'])); ?></td>
+        <td><?= date('d M Y H:i', strtotime($arr['cat_modified'])); ?></td>
+        <td><?= $link_edit . ' ' . $link_delete; ?></td>
       </tr>
     <?php
     }
