@@ -1,28 +1,30 @@
 <?php
 include '../inc.php';
 
-$cat_id = isset($_GET['cat_id']) ? (int) $_GET['cat_id'] : 0;
+$id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
-if (empty($cat_id)) {
-  header('location:kategori.php');
+if (empty($id)) {
+  header('location:produk.php');
   exit();
 }
 
-$cat_name = isset($_POST['cat_name']) ? $_POST['cat_name'] : '';
+$nama_pro = isset($_POST['nama_pro']) ? $_POST['nama_pro'] : '';
 
-if (!empty($cat_name)) {
+if (!empty($nama_pro)) {
   //proses submit ke API
 
-  $cat_id = isset($_POST['cat_id']) ? (int) $_POST['cat_id'] : '';
-  $cat_description = isset($_POST['cat_description']) ? $_POST['cat_description'] : '';
-  $gambar = isset($_POST['gambar']) ? $_POST['gambar'] : '';
+  $id = isset($_POST['id']) ? (int) $_POST['id'] : '';
+  $idkat = isset($_POST['idkat']) ? (int) $_POST['idkat'] : '';
+  $ket = isset($_POST['ket']) ? $_POST['ket'] : '';
+  $acak1 = isset($_POST['acak1']) ? $_POST['acak1'] : '';
 
-  $url = $api_url . '/kategori/update.php';
+  $url = $api_url . '/produk/update.php';
   $postdata = array();
-  $postdata['cat_id'] = $cat_id;
-  $postdata['cat_name'] = $cat_name;
-  $postdata['cat_description'] = $cat_description;
-  $postdata['gambar'] = $gambar;
+  $postdata['id'] = $id;
+  $postdata['idkat'] = $idkat;
+  $postdata['nama_pro'] = $nama_pro;
+  $postdata['ket'] = $ket;
+  $postdata['acak1'] = $acak1;
 
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, $url);
@@ -43,7 +45,7 @@ if (!empty($cat_name)) {
   $info = isset($arr_response['info']) ? $arr_response['info'] : 'error';
   $msg = isset($arr_response['msg']) ? $arr_response['msg'] : 'tidak diketahui';
 
-  header('location:kategori-edit.php?cat_id=' . $cat_id . '&info=' . $info . '&msg=' . $msg);
+  header('location:produk-edit.php?id=' . $id . '&info=' . $info . '&msg=' . $msg);
   exit();
 }
 ?>
@@ -52,11 +54,11 @@ if (!empty($cat_name)) {
 
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>Edit Kategori</title>
+  <title>Edit Produk</title>
 </head>
 
 <body>
-  <h1>Edit Kategori</h1>
+  <h1>Edit Produk</h1>
 
   <?php
   $info = isset($_GET['info']) ? $_GET['info'] : '';
@@ -69,7 +71,7 @@ if (!empty($cat_name)) {
   }
 
 
-  $api_categories_detail = $api_url . '/kategori/detail.php?cat_id=' . $cat_id;
+  $api_categories_detail = $api_url . '/produk/detail.php?id=' . $id;
   $json_detail = @file_get_contents($api_categories_detail);
 
 
@@ -77,25 +79,30 @@ if (!empty($cat_name)) {
   $result = isset($arr_detail['result']) ? $arr_detail['result'] : array();
   ?>
 
-  <p><a href="kategori.php">&laquo; Back</a> | <a href="kategori-edit.php?cat_id=<?php echo $result['cat_id']; ?>">Reload</a></p>
+  <p><a href="produk.php">&laquo; Back</a> | <a href="produk-edit.php?id=<?php echo $result['id']; ?>">Reload</a></p>
 
   <form method="POST" action="">
-    <input type="hidden" name="cat_id" value="<?php echo $result['idkat']; ?>" />
+    <input type="hidden" name="id" value="<?php echo $result['id']; ?>" />
     <table border="1">
       <tr>
-        <td>Nama Kategori</td>
+        <td>Kategori</td>
         <td>:</td>
-        <td><input type="text" name="cat_name" size="50" value="<?php echo $result['nama']; ?>"></td>
+        <td><input type="text" name="idkat" size="50" value="<?php echo $result['idkat']; ?>"></td>
       </tr>
       <tr>
-        <td>Keterangan Kategori</td>
+        <td>Nama Produk</td>
         <td>:</td>
-        <td><input type="text" name="cat_description" size="50" value="<?php echo $result['ket']; ?>"></td>
+        <td><input type="text" name="nama_pro" size="50" value="<?php echo $result['nama_pro']; ?>"></td>
+      </tr>
+      <tr>
+        <td>Keterangan Produk</td>
+        <td>:</td>
+        <td><input type="text" name="ket" size="50" value="<?php echo $result['ket']; ?>"></td>
       </tr>
       <tr>
         <td>Gambar</td>
         <td>:</td>
-        <td><input type="text" name="gambar" size="50" value="<?php echo $result['gambar']; ?>"></td>
+        <td><input type="text" name="acak1" size="50" value="<?php echo $result['acak1']; ?>"></td>
       </tr>
     </table>
 

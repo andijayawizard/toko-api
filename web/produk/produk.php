@@ -6,13 +6,13 @@ include '../inc.php';
 
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>Kategori</title>
+  <title>Produk</title>
 </head>
 <script type="text/javascript">
-  function deleteData(cat_id) {
+  function deleteData(id) {
     var cfm = confirm("Apakah anda yakin akan menghapus data ini?");
     if (cfm) {
-      window.location.href = 'kategori-delete.php?cat_id=' + cat_id;
+      window.location.href = 'produk-delete.php?id=' + id;
     }
   }
 </script>
@@ -23,7 +23,7 @@ include '../inc.php';
   $json_list = @file_get_contents($api_categories_list);
   ?>
 
-  <h1>Kategori</h1>
+  <h1>Produk</h1>
 
   <?php
   $info = isset($_GET['info']) ? $_GET['info'] : '';
@@ -41,14 +41,15 @@ include '../inc.php';
     <a href="../kategori/kategori.php">kategori</a> |
     <a href="../produk/kategori.php">produk</a>
   </p>
+  <p><a href="produk-add.php">Add New</a> | <a href="produk.php">Reload</a></p>
 
   <table border="1">
     <tr>
       <th>ID</th>
       <th>Nama</th>
-      <th>Keterangan</th>
-      <!-- <th>Entry</th>
-      <th>Update</th> -->
+      <th>Kategori</th>
+      <!-- <th>Keterangan</th> -->
+      <!-- <th>Gambar</th> -->
       <th>Action</th>
     </tr>
     <?php
@@ -59,16 +60,16 @@ include '../inc.php';
     foreach ($result as $arr) {
       $no++;
 
-      $link_edit = '<a href="kategori-edit.php?cat_id=' . $arr['idkat'] . '">[Edit]</a>';
-      $link_delete = '<a href="javascript:void:;" onclick="deleteData(\'' . $arr['idkat'] . '\')">[Delete]</a>';
+      $link_edit = '<a href="produk-edit.php?id=' . $arr['id'] . '">[Edit]</a>';
+      $link_delete = '<a href="javascript:void:;" onclick="deleteData(\'' . $arr['id'] . '\')">[Delete]</a>';
 
     ?>
       <tr>
         <td><?= $no; ?></td>
         <td><?= $arr['nama_pro']; ?></td>
-        <td><?= $arr['ket']; ?></td>
-        <!-- <td><?= date('d M Y H:i', strtotime($arr['cat_created'])); ?></td>
-        <td><?= date('d M Y H:i', strtotime($arr['cat_modified'])); ?></td> -->
+        <td><?= $arr['nama']; ?></td>
+        <!-- <td><?= $arr['ket']; ?></td> -->
+        <!-- <td><?= $arr['acak1']; ?></td> -->
         <td><?= $link_edit . ' ' . $link_delete; ?></td>
       </tr>
     <?php

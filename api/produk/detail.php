@@ -5,9 +5,9 @@ include dirname(dirname(__FILE__)) . '/db/Db.class.php';
 
 $db = new Db();
 
-$cat_id = isset($_GET['cat_id']) ? (int) $_GET['cat_id'] : 0;
+$id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
-$cat_detail = $db->row('select * from categories where cat_id=' . $cat_id);
+$cat_detail = $db->row('select * from produk where id=' . $id);
 
 $arr = array();
 $arr['info'] = 'success';

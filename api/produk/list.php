@@ -6,18 +6,19 @@ include dirname(dirname(__FILE__)) . '/db/Db.class.php';
 $db = new Db();
 
 $limit = isset($_GET['limit']) ? (int) $_GET['limit'] : 0;
-$name = isset($_GET['name']) ? $_GET['name'] : '';
+$nama_pro = isset($_GET['nama_pro']) ? $_GET['nama_pro'] : '';
 
 $sql_limit = '';
 if (!empty($limit)) {
   $sql_limit = ' LIMIT 0,' . $limit;
 }
 $sql_name = '';
-if (!empty($name)) {
-  $sql_name = ' where nama_pro LIKE \'%' . $name . '%\' ';
+if (!empty($nama_pro)) {
+  $sql_name = ' where nama_pro LIKE \'%' . $nama_pro . '%\' ';
 }
 
-$cat_list = $db->query('select * from produk ' . $sql_name . ' ' . $sql_limit);
+// $cat_list = $db->query('select * from produk ' . $sql_name . ' ' . $sql_limit);
+$cat_list = $db->query('select * from produk inner join kategori where produk.idkat=kategori.idkat ' . $sql_limit) or die(mysqli_error($db));
 
 $arr = array();
 $arr['info'] = 'success';

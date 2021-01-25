@@ -8,6 +8,7 @@ $db = new Db();
 $cat_id = isset($_POST['cat_id']) ? (int) $_POST['cat_id'] : '';
 $cat_name = isset($_POST['cat_name']) ? $_POST['cat_name'] : '';
 $cat_description = isset($_POST['cat_description']) ? $_POST['cat_description'] : '';
+$gambar = isset($_POST['gambar']) ? $_POST['gambar'] : '';
 
 if (empty($cat_id) or empty($cat_name)) {
   $arr = array();
@@ -21,7 +22,7 @@ if (empty($cat_id) or empty($cat_name)) {
 $datas = array();
 $datas['nama'] = $cat_name;
 $datas['ket'] = $cat_description;
-// $datas['cat_modified'] = date('Y-m-d H:i:s');
+$datas['gambar'] = $gambar;
 
 $exec = $db->update('kategori', $datas, ' where idkat=' . $cat_id);
 

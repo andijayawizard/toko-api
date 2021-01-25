@@ -39,7 +39,7 @@ include '../inc.php';
   <p>
     <!-- <a href="../categories/kategori.php">categories</a> | -->
     <a href="../kategori/kategori.php">kategori</a> |
-    <a href="../produk/kategori.php">produk</a>
+    <a href="../produk/produk.php">produk</a>
   </p>
   <p><a href="kategori-add.php">Add New</a> | <a href="kategori.php">Reload</a></p>
 
@@ -47,9 +47,9 @@ include '../inc.php';
     <tr>
       <th>ID</th>
       <th>Nama</th>
-      <th>Keterangan</th>
-      <!-- <th>Entry</th>
-      <th>Update</th> -->
+      <!-- <th>Keterangan</th> -->
+      <th>Gambar</th>
+      <!-- <th>Update</th> -->
       <th>Action</th>
     </tr>
     <?php
@@ -67,9 +67,9 @@ include '../inc.php';
       <tr>
         <td><?= $no; ?></td>
         <td><?= $arr['nama']; ?></td>
-        <td><?= $arr['ket']; ?></td>
-        <!-- <td><?= date('d M Y H:i', strtotime($arr['cat_created'])); ?></td>
-        <td><?= date('d M Y H:i', strtotime($arr['cat_modified'])); ?></td> -->
+        <!-- <td><?= $arr['ket']; ?></td> -->
+        <td><?= $arr['gambar']; ?></td>
+        <!-- <td><?= date('d M Y H:i', strtotime($arr['cat_modified'])); ?></td> -->
         <td><?= $link_edit . ' ' . $link_delete; ?></td>
       </tr>
     <?php

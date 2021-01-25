@@ -5,11 +5,13 @@ include dirname(dirname(__FILE__)) . '/db/Db.class.php';
 
 $db = new Db();
 
-$cat_id = isset($_POST['cat_id']) ? (int) $_POST['cat_id'] : '';
-$cat_name = isset($_POST['cat_name']) ? $_POST['cat_name'] : '';
-$cat_description = isset($_POST['cat_description']) ? $_POST['cat_description'] : '';
+$id = isset($_POST['id']) ? (int) $_POST['id'] : '';
+$idkat = isset($_POST['idkat']) ? (int) $_POST['idkat'] : '';
+$nama_pro = isset($_POST['nama_pro']) ? $_POST['nama_pro'] : '';
+$ket = isset($_POST['ket']) ? $_POST['ket'] : '';
+$acak1 = isset($_POST['acak1']) ? $_POST['acak1'] : '';
 
-if (empty($cat_id) or empty($cat_name)) {
+if (empty($idkat) or empty($nama_pro)) {
   $arr = array();
   $arr['info'] = 'error';
   $arr['msg'] = 'ID atau nama Kategori tidak ada';
@@ -19,11 +21,12 @@ if (empty($cat_id) or empty($cat_name)) {
 }
 
 $datas = array();
-$datas['cat_name'] = $cat_name;
-$datas['cat_description'] = $cat_description;
-$datas['cat_modified'] = date('Y-m-d H:i:s');
+$datas['idkat'] = $idkat;
+$datas['nama_pro'] = $nama_pro;
+$datas['ket'] = $ket;
+$datas['acak1'] = $acak1;
 
-$exec = $db->update('categories', $datas, ' where cat_id=' . $cat_id);
+$exec = $db->update('produk', $datas, ' where id=' . $id);
 
 if (!$exec) {
   $arr = array();

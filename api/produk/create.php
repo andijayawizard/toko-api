@@ -5,10 +5,12 @@ include dirname(dirname(__FILE__)) . '/db/Db.class.php';
 
 $db = new Db();
 
-$cat_name = isset($_POST['cat_name']) ? $_POST['cat_name'] : '';
-$cat_description = isset($_POST['cat_description']) ? $_POST['cat_description'] : '';
+$idkat = isset($_POST['idkat']) ? $_POST['idkat'] : '';
+$nama_pro = isset($_POST['nama_pro']) ? $_POST['nama_pro'] : '';
+$ket = isset($_POST['ket']) ? $_POST['ket'] : '';
+$acak1 = isset($_POST['acak1']) ? $_POST['acak1'] : '';
 
-if (empty($cat_name)) {
+if (empty($nama_pro)) {
   $arr = array();
   $arr['info'] = 'error';
   $arr['msg'] = 'Kategori tidak ada';
@@ -18,12 +20,12 @@ if (empty($cat_name)) {
 }
 
 $datas = array();
-$datas['cat_name'] = $cat_name;
-$datas['cat_description'] = $cat_description;
-$datas['cat_created'] = date('Y-m-d H:i:s');
-$datas['cat_modified'] = date('Y-m-d H:i:s');
+$datas['idkat'] = $idkat;
+$datas['nama_pro'] = $nama_pro;
+$datas['ket'] = $ket;
+$datas['acak1'] = $acak1;
 
-$exec = $db->insert('categories', $datas);
+$exec = $db->insert('produk', $datas);
 
 if (!$exec) {
   $arr = array();

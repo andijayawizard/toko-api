@@ -5,9 +5,9 @@ include dirname(dirname(__FILE__)) . '/db/Db.class.php';
 
 $db = new Db();
 
-$cat_id = isset($_POST['cat_id']) ? (int) $_POST['cat_id'] : '';
+$id = isset($_POST['id']) ? (int) $_POST['id'] : '';
 
-if (empty($cat_id)) {
+if (empty($id)) {
   $arr = array();
   $arr['info'] = 'error';
   $arr['msg'] = 'ID Kategori tidak ditemukan';
@@ -16,7 +16,7 @@ if (empty($cat_id)) {
   exit();
 }
 
-$db->query('delete from categories where cat_id=' . $cat_id);
+$db->query('delete from produk where id=' . $id);
 
 $arr = array();
 $arr['info'] = 'success';
