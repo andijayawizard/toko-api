@@ -37,7 +37,7 @@ include '../inc.php';
   ?>
 
   <p>
-    <a href="../categories/kategori.php">categories</a> |
+    <!-- <a href="../categories/kategori.php">categories</a> | -->
     <a href="../kategori/kategori.php">kategori</a> |
     <a href="../produk/kategori.php">produk</a>
   </p>

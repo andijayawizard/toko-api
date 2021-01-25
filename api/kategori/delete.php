@@ -16,7 +16,7 @@ if (empty($cat_id)) {
   exit();
 }
 
-$db->query('delete from categories where cat_id=' . $cat_id);
+$db->query('delete from kategori where idkat=' . $cat_id);
 
 $arr = array();
 $arr['info'] = 'success';

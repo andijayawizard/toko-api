@@ -37,10 +37,11 @@ include '../inc.php';
   ?>
 
   <p>
-    <a href="../categories/kategori.php">categories</a> |
+    <!-- <a href="../categories/kategori.php">categories</a> | -->
     <a href="../kategori/kategori.php">kategori</a> |
     <a href="../produk/kategori.php">produk</a>
   </p>
+  <p><a href="kategori-add.php">Add New</a> | <a href="kategori.php">Reload</a></p>
 
   <table border="1">
     <tr>

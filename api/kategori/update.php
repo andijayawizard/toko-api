@@ -19,11 +19,11 @@ if (empty($cat_id) or empty($cat_name)) {
 }
 
 $datas = array();
-$datas['cat_name'] = $cat_name;
-$datas['cat_description'] = $cat_description;
-$datas['cat_modified'] = date('Y-m-d H:i:s');
+$datas['nama'] = $cat_name;
+$datas['ket'] = $cat_description;
+// $datas['cat_modified'] = date('Y-m-d H:i:s');
 
-$exec = $db->update('categories', $datas, ' where cat_id=' . $cat_id);
+$exec = $db->update('kategori', $datas, ' where idkat=' . $cat_id);
 
 if (!$exec) {
   $arr = array();
