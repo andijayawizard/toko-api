@@ -1,3 +1,12 @@
+Time : 13:28:44
+SQLSTATE[HY000] [2002] Connection refused
+
+Time : 13:28:42
+SQLSTATE[HY000] [2002] Connection refused
+
+Time : 13:28:40
+SQLSTATE[HY000] [2002] Connection refused
+
 Time : 13:00:54
 SQLSTATE[42S22]: Column not found: 1054 Unknown column 'kategori' in 'where clause'
 Raw SQL : select * from produk inner join kategori where produk.idkat=kategori=idkat
