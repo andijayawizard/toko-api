@@ -1,2 +1,2 @@
 <?php
-header('location:kategori.php');
+header('location:categories/kategori.php');

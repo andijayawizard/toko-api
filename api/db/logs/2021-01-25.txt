@@ -1,0 +1,31 @@
+Time : 07:49:53
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nama' in 'where clause'
+Raw SQL : select * from produk  where nama LIKE '%torch%'
+
+Time : 07:49:27
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nama' in 'where clause'
+Raw SQL : select * from produk  where nama LIKE '%pro%'
+
+Time : 07:23:09
+SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)
+
+Time : 07:23:07
+SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)
+
+Time : 07:22:54
+SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)
+
+Time : 07:22:45
+SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)
+
+Time : 07:19:17
+SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+
+
+Time : 07:19:14
+SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+
+
+Time : 07:19:11
+SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+
