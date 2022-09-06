@@ -19,12 +19,13 @@ if (!empty($NamaProduk)) {
   $Stok = isset($_POST['Stok']) ? $_POST['Stok'] : '';
 
   $url = $api_url . '/produk/update.php';
-  $postdata = array();
-  $postdata['IdProduk'] = $IdProduk;
-  $postdata['KodeProduk'] = $KodeProduk;
-  $postdata['NamaProduk'] = $NamaProduk;
-  $postdata['HargaJual'] = $HargaJual;
-  $postdata['Stok'] = $Stok;
+  $postdata = array(
+    'IdProduk' => $IdProduk, 
+    'KodeProduk'=>$KodeProduk, 
+    'NamaProduk'=>$NamaProduk, 
+    'HargaJual'=>$HargaJual, 
+    'Stok'=>$Stok
+  );
 
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, $url);
