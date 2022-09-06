@@ -1,0 +1,17 @@
+node_modules
+admin-lte
+/vendor/
+/lib/html2pdf/
+/assets/uploads/thumb/
+/assets/js-unused/
+/api/panggil.php
+/api/koneksi.php
+/api/db/settings.ini.php
+/api/db/logs
+/lib/config.php
+/lib/PHPMailer/
+
+/frontend/thumbs/
+/assets/uploads/images/
+
+docker-compose.yml

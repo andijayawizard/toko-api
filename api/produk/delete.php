@@ -5,7 +5,7 @@ include dirname(dirname(__FILE__)) . '/db/Db.class.php';
 
 $db = new Db();
 
-$id = isset($_POST['id']) ? (int) $_POST['id'] : '';
+$id = isset($_POST['IdProduk']) ? (int) $_POST['IdProduk'] : '';
 
 if (empty($id)) {
   $arr = array();
@@ -16,7 +16,7 @@ if (empty($id)) {
   exit();
 }
 
-$db->query('delete from produk where id=' . $id);
+$db->query('DELETE from produk where IdProduk=' . $id);
 
 $arr = array();
 $arr['info'] = 'success';

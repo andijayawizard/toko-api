@@ -5,25 +5,25 @@ include dirname(dirname(__FILE__)) . '/db/Db.class.php';
 
 $db = new Db();
 
-$idkat = isset($_POST['idkat']) ? $_POST['idkat'] : '';
-$nama_pro = isset($_POST['nama_pro']) ? $_POST['nama_pro'] : '';
-$ket = isset($_POST['ket']) ? $_POST['ket'] : '';
-$acak1 = isset($_POST['acak1']) ? $_POST['acak1'] : '';
+$KodeProduk = isset($_POST['KodeProduk']) ? $_POST['KodeProduk'] : '';
+$NamaProduk = isset($_POST['NamaProduk']) ? $_POST['NamaProduk'] : '';
+$HargaJual = isset($_POST['HargaJual']) ? $_POST['HargaJual'] : '';
+$Stok = isset($_POST['Stok']) ? $_POST['Stok'] : '';
 
-if (empty($nama_pro)) {
+if (empty($NamaProduk)) {
   $arr = array();
   $arr['info'] = 'error';
-  $arr['msg'] = 'Kategori tidak ada';
+  $arr['msg'] = 'produk tidak ada';
 
   echo json_encode($arr);
   exit();
 }
 
 $datas = array();
-$datas['idkat'] = $idkat;
-$datas['nama_pro'] = $nama_pro;
-$datas['ket'] = $ket;
-$datas['acak1'] = $acak1;
+$datas['KodeProduk'] = $KodeProduk;
+$datas['NamaProduk'] = $NamaProduk;
+$datas['HargaJual'] = $HargaJual;
+$datas['Stok'] = $Stok;
 
 $exec = $db->insert('produk', $datas);
 

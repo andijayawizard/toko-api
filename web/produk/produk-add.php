@@ -1,21 +1,20 @@
 <?php
 include '../inc.php';
 
-$nama_pro = isset($_POST['nama_pro']) ? $_POST['nama_pro'] : '';
+$KodeProduk = isset($_POST['KodeProduk']) ? $_POST['KodeProduk'] : '';
+$NamaProduk = isset($_POST['NamaProduk']) ? $_POST['NamaProduk'] : '';
+$HargaJual = isset($_POST['HargaJual']) ? $_POST['HargaJual'] : '';
+$Stok = isset($_POST['Stok']) ? $_POST['Stok'] : '';
 
-if (!empty($nama_pro)) {
+if (!empty($NamaProduk)) {
   //proses submit ke API
-
-  $idkat = isset($_POST['idkat']) ? $_POST['idkat'] : '';
-  $ket = isset($_POST['ket']) ? $_POST['ket'] : '';
-  $acak1 = isset($_POST['acak1']) ? $_POST['acak1'] : '';
 
   $url = $api_url . '/produk/create.php';
   $postdata = array();
-  $postdata['idkat'] = $idkat;
-  $postdata['nama_pro'] = $nama_pro;
-  $postdata['ket'] = $ket;
-  $postdata['acak1'] = $acak1;
+  $postdata['KodeProduk'] = $KodeProduk;
+  $postdata['NamaProduk'] = $NamaProduk;
+  $postdata['HargaJual'] = $HargaJual;
+  $postdata['Stok'] = $Stok;
 
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, $url);
@@ -36,7 +35,7 @@ if (!empty($nama_pro)) {
   $info = isset($arr_response['info']) ? $arr_response['info'] : 'error';
   $msg = isset($arr_response['msg']) ? $arr_response['msg'] : 'tidak diketahui';
 
-  header('location:produk-add.php?info=' . $info . '&msg=' . $msg);
+  header('location: produk-add.php?info=' . $info . '&msg=' . $msg);
   exit();
 }
 ?>
@@ -67,24 +66,24 @@ if (!empty($nama_pro)) {
   <form method="POST" action="">
     <table border="1">
       <tr>
-        <td>Nama Kategori</td>
+        <td>Kode</td>
         <td>:</td>
-        <td><input type="text" name="idkat" size="50"></td>
+        <td><input type="text" name="KodeProduk" size="50"></td>
       </tr>
       <tr>
         <td>Nama Produk</td>
         <td>:</td>
-        <td><input type="text" name="nama_pro" size="50"></td>
+        <td><input type="text" name="NamaProduk" size="50"></td>
       </tr>
       <tr>
-        <td>Keterangan Produk</td>
+        <td>Harga</td>
         <td>:</td>
-        <td><input type="text" name="ket" size="50"></td>
+        <td><input type="text" name="HargaJual" size="50"></td>
       </tr>
       <tr>
-        <td>Gambar</td>
+        <td>Stok</td>
         <td>:</td>
-        <td><input type="text" name="acak1" size="50"></td>
+        <td><input type="text" name="Stok" size="50"></td>
       </tr>
     </table>
 

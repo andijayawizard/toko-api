@@ -1,17 +1,17 @@
 <?php
 include '../inc.php';
 
-$id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
+$IdProduk = isset($_GET['IdProduk']) ? (int) $_GET['IdProduk'] : 0;
 
-if (empty($id)) {
-  header('location:produk.php');
+if (empty($IdProduk)) {
+  header('location: produk.php');
   exit();
 }
 
 //proses delete ke API
 $url = $api_url . '/produk/delete.php';
 $postdata = array();
-$postdata['id'] = $id;
+$postdata['IdProduk'] = $IdProduk;
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
@@ -32,4 +32,4 @@ $arr_response = json_decode($response, true);
 $info = isset($arr_response['info']) ? $arr_response['info'] : 'error';
 $msg = isset($arr_response['msg']) ? $arr_response['msg'] : 'tidak diketahui';
 
-header('location:produk.php?info=' . $info . '&msg=' . $msg);
+header('location: produk.php?info=' . $info . '&msg=' . $msg);

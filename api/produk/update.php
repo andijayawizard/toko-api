@@ -5,13 +5,13 @@ include dirname(dirname(__FILE__)) . '/db/Db.class.php';
 
 $db = new Db();
 
-$id = isset($_POST['id']) ? (int) $_POST['id'] : '';
-$idkat = isset($_POST['idkat']) ? (int) $_POST['idkat'] : '';
-$nama_pro = isset($_POST['nama_pro']) ? $_POST['nama_pro'] : '';
-$ket = isset($_POST['ket']) ? $_POST['ket'] : '';
-$acak1 = isset($_POST['acak1']) ? $_POST['acak1'] : '';
+$IdProduk = isset($_POST['IdProduk']) ? (int) $_POST['IdProduk'] : '';
+$KodeProduk = isset($_POST['KodeProduk']) ? $_POST['KodeProduk'] : '';
+$NamaProduk = isset($_POST['NamaProduk']) ? $_POST['NamaProduk'] : '';
+$HargaJual = isset($_POST['HargaJual']) ? $_POST['HargaJual'] : '';
+$Stok = isset($_POST['Stok']) ? $_POST['Stok'] : '';
 
-if (empty($idkat) or empty($nama_pro)) {
+if (empty($IdProduk) or empty($NamaProduk)) {
   $arr = array();
   $arr['info'] = 'error';
   $arr['msg'] = 'ID atau nama Kategori tidak ada';
@@ -21,12 +21,13 @@ if (empty($idkat) or empty($nama_pro)) {
 }
 
 $datas = array();
-$datas['idkat'] = $idkat;
-$datas['nama_pro'] = $nama_pro;
-$datas['ket'] = $ket;
-$datas['acak1'] = $acak1;
+$datas['IdProduk'] = $IdProduk;
+$datas['KodeProduk'] = $KodeProduk;
+$datas['NamaProduk'] = $NamaProduk;
+$datas['HargaJual'] = $HargaJual;
+$datas['Stok'] = $Stok;
 
-$exec = $db->update('produk', $datas, ' where id=' . $id);
+$exec = $db->update('produk', $datas, ' where IdProduk=' . $IdProduk);
 
 if (!$exec) {
   $arr = array();

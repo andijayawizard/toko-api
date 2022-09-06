@@ -9,10 +9,10 @@ include '../inc.php';
   <title>Produk</title>
 </head>
 <script type="text/javascript">
-  function deleteData(id) {
+  function deleteData(IdProduk) {
     var cfm = confirm("Apakah anda yakin akan menghapus data ini?");
     if (cfm) {
-      window.location.href = 'produk-delete.php?id=' + id;
+      window.location.href = 'produk-delete.php?IdProduk=' + IdProduk;
     }
   }
 </script>
@@ -46,10 +46,10 @@ include '../inc.php';
   <table border="1">
     <tr>
       <th>ID</th>
+      <th>Kode</th>
       <th>Nama</th>
-      <th>Kategori</th>
-      <!-- <th>Keterangan</th> -->
-      <!-- <th>Gambar</th> -->
+      <th>Harga</th>
+      <th>Stok</th>
       <th>Action</th>
     </tr>
     <?php
@@ -60,16 +60,17 @@ include '../inc.php';
     foreach ($result as $arr) {
       $no++;
 
-      $link_edit = '<a href="produk-edit.php?id=' . $arr['IdProduk'] . '">[Edit]</a>';
+      $link_edit = '<a href="produk-edit.php?IdProduk=' . $arr['IdProduk'] . '">[Edit]</a>';
       $link_delete = '<a href="javascript:void:;" onclick="deleteData(\'' . $arr['IdProduk'] . '\')">[Delete]</a>';
 
     ?>
       <tr>
         <td><?= $no; ?></td>
+        <td><?= $arr['KodeProduk']; ?></td>
         <td><?= $arr['NamaProduk']; ?></td>
         <td><?= $arr['HargaJual']; ?></td>
-        <!-- <td><?= $arr['ket']; ?></td> -->
-        <!-- <td><?= $arr['acak1']; ?></td> -->
+        <td><?= $arr['Stok']; ?></td> 
+        <!-- <td><?= date('d M Y H:i', strtotime($arr['cat_modified'])); ?></td> -->
         <td><?= $link_edit . ' ' . $link_delete; ?></td>
       </tr>
     <?php

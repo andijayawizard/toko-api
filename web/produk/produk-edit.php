@@ -1,30 +1,30 @@
 <?php
 include '../inc.php';
 
-$id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
+$IdProduk = isset($_GET['IdProduk']) ? (int) $_GET['IdProduk'] : 0;
 
-if (empty($id)) {
-  header('location:produk.php');
+if (empty($IdProduk)) {
+  header('location: produk.php');
   exit();
 }
 
-$nama_pro = isset($_POST['nama_pro']) ? $_POST['nama_pro'] : '';
+$NamaProduk = isset($_POST['NamaProduk']) ? $_POST['NamaProduk'] : '';
 
-if (!empty($nama_pro)) {
+if (!empty($NamaProduk)) {
   //proses submit ke API
 
-  $id = isset($_POST['id']) ? (int) $_POST['id'] : '';
-  $idkat = isset($_POST['idkat']) ? (int) $_POST['idkat'] : '';
-  $ket = isset($_POST['ket']) ? $_POST['ket'] : '';
-  $acak1 = isset($_POST['acak1']) ? $_POST['acak1'] : '';
+  $IdProduk = isset($_POST['IdProduk']) ? (int) $_POST['IdProduk'] : '';
+  $KodeProduk = isset($_POST['KodeProduk']) ? $_POST['KodeProduk'] : '';
+  $HargaJual = isset($_POST['HargaJual']) ? $_POST['HargaJual'] : '';
+  $Stok = isset($_POST['Stok']) ? $_POST['Stok'] : '';
 
   $url = $api_url . '/produk/update.php';
   $postdata = array();
-  $postdata['id'] = $id;
-  $postdata['idkat'] = $idkat;
-  $postdata['nama_pro'] = $nama_pro;
-  $postdata['ket'] = $ket;
-  $postdata['acak1'] = $acak1;
+  $postdata['IdProduk'] = $IdProduk;
+  $postdata['KodeProduk'] = $KodeProduk;
+  $postdata['NamaProduk'] = $NamaProduk;
+  $postdata['HargaJual'] = $HargaJual;
+  $postdata['Stok'] = $Stok;
 
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, $url);
@@ -45,7 +45,7 @@ if (!empty($nama_pro)) {
   $info = isset($arr_response['info']) ? $arr_response['info'] : 'error';
   $msg = isset($arr_response['msg']) ? $arr_response['msg'] : 'tidak diketahui';
 
-  header('location:produk-edit.php?id=' . $id . '&info=' . $info . '&msg=' . $msg);
+  header('location:produk-edit.php?IdProduk=' . $IdProduk . '&info=' . $info . '&msg=' . $msg);
   exit();
 }
 ?>
@@ -71,7 +71,7 @@ if (!empty($nama_pro)) {
   }
 
 
-  $api_categories_detail = $api_url . '/produk/detail.php?id=' . $id;
+  $api_categories_detail = $api_url . '/produk/detail.php?IdProduk=' . $IdProduk;
   $json_detail = @file_get_contents($api_categories_detail);
 
 
@@ -79,30 +79,30 @@ if (!empty($nama_pro)) {
   $result = isset($arr_detail['result']) ? $arr_detail['result'] : array();
   ?>
 
-  <p><a href="produk.php">&laquo; Back</a> | <a href="produk-edit.php?id=<?php echo $result['id']; ?>">Reload</a></p>
+  <p><a href="produk.php">&laquo; Back</a> | <a href="produk-edit.php?IdProduk=<?php echo $result['IdProduk']; ?>">Reload</a></p>
 
   <form method="POST" action="">
-    <input type="hidden" name="id" value="<?php echo $result['id']; ?>" />
+    <input type="hidden" name="IdProduk" value="<?php echo $result['IdProduk']; ?>" />
     <table border="1">
       <tr>
-        <td>Kategori</td>
+        <td>Kode</td>
         <td>:</td>
-        <td><input type="text" name="idkat" size="50" value="<?php echo $result['idkat']; ?>"></td>
+        <td><input type="text" name="KodeProduk" size="50" value="<?php echo $result['KodeProduk']; ?>"></td>
       </tr>
       <tr>
         <td>Nama Produk</td>
         <td>:</td>
-        <td><input type="text" name="nama_pro" size="50" value="<?php echo $result['nama_pro']; ?>"></td>
+        <td><input type="text" name="NamaProduk" size="50" value="<?php echo $result['NamaProduk']; ?>"></td>
       </tr>
       <tr>
-        <td>Keterangan Produk</td>
+        <td>Harga</td>
         <td>:</td>
-        <td><input type="text" name="ket" size="50" value="<?php echo $result['ket']; ?>"></td>
+        <td><input type="text" name="HargaJual" size="50" value="<?php echo $result['HargaJual']; ?>"></td>
       </tr>
       <tr>
-        <td>Gambar</td>
+        <td>Stok</td>
         <td>:</td>
-        <td><input type="text" name="acak1" size="50" value="<?php echo $result['acak1']; ?>"></td>
+        <td><input type="text" name="Stok" size="50" value="<?php echo $result['Stok']; ?>"></td>
       </tr>
     </table>
 
