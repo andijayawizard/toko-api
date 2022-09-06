@@ -17,7 +17,7 @@ if (!empty($name)) {
   $sql_name = ' where nama LIKE \'%' . $name . '%\' ';
 }
 
-$cat_list = $db->query('select * from kategori ' . $sql_name . ' ' . $sql_limit);
+$cat_list = $db->query('SELECT * from kategori ' . $sql_name . ' ' . $sql_limit);
 
 $arr = array();
 $arr['info'] = 'success';

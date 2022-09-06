@@ -37,9 +37,9 @@ include '../inc.php';
   ?>
 
   <p>
-    <!-- <a href="../categories/kategori.php">categories</a> | -->
-    <a href="../kategori/kategori.php">kategori</a> |
-    <a href="../produk/kategori.php">produk</a>
+    <a href="../categories/categories.php">categories</a> | 
+    <a href="../kategori/kategori.php">kategori</a> | 
+    <a href="../produk/produk.php">produk</a>
   </p>
   <p><a href="produk-add.php">Add New</a> | <a href="produk.php">Reload</a></p>
 
@@ -60,14 +60,14 @@ include '../inc.php';
     foreach ($result as $arr) {
       $no++;
 
-      $link_edit = '<a href="produk-edit.php?id=' . $arr['id'] . '">[Edit]</a>';
-      $link_delete = '<a href="javascript:void:;" onclick="deleteData(\'' . $arr['id'] . '\')">[Delete]</a>';
+      $link_edit = '<a href="produk-edit.php?id=' . $arr['IdProduk'] . '">[Edit]</a>';
+      $link_delete = '<a href="javascript:void:;" onclick="deleteData(\'' . $arr['IdProduk'] . '\')">[Delete]</a>';
 
     ?>
       <tr>
         <td><?= $no; ?></td>
-        <td><?= $arr['nama_pro']; ?></td>
-        <td><?= $arr['nama']; ?></td>
+        <td><?= $arr['NamaProduk']; ?></td>
+        <td><?= $arr['HargaJual']; ?></td>
         <!-- <td><?= $arr['ket']; ?></td> -->
         <!-- <td><?= $arr['acak1']; ?></td> -->
         <td><?= $link_edit . ' ' . $link_delete; ?></td>

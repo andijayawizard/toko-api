@@ -4,7 +4,7 @@ include '../inc.php';
 $cat_id = isset($_GET['cat_id']) ? (int) $_GET['cat_id'] : 0;
 
 if (empty($cat_id)) {
-  header('location:kategori.php');
+  header('location:categories.php');
   exit();
 }
 
@@ -17,7 +17,7 @@ if (!empty($cat_name)) {
   $cat_description = isset($_POST['cat_description']) ? $_POST['cat_description'] : '';
   $gambar = isset($_POST['gambar']) ? $_POST['gambar'] : '';
 
-  $url = $api_url . '/kategori/update.php';
+  $url = $api_url . '/categories/update.php';
   $postdata = array();
   $postdata['cat_id'] = $cat_id;
   $postdata['cat_name'] = $cat_name;
@@ -43,7 +43,7 @@ if (!empty($cat_name)) {
   $info = isset($arr_response['info']) ? $arr_response['info'] : 'error';
   $msg = isset($arr_response['msg']) ? $arr_response['msg'] : 'tidak diketahui';
 
-  header('location:kategori-edit.php?cat_id=' . $cat_id . '&info=' . $info . '&msg=' . $msg);
+  header('location:categories-edit.php?cat_id=' . $cat_id . '&info=' . $info . '&msg=' . $msg);
   exit();
 }
 ?>
@@ -52,11 +52,11 @@ if (!empty($cat_name)) {
 
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>Edit Kategori</title>
+  <title>Edit categories</title>
 </head>
 
 <body>
-  <h1>Edit Kategori</h1>
+  <h1>Edit categories</h1>
 
   <?php
   $info = isset($_GET['info']) ? $_GET['info'] : '';
@@ -69,7 +69,7 @@ if (!empty($cat_name)) {
   }
 
 
-  $api_categories_detail = $api_url . '/kategori/detail.php?cat_id=' . $cat_id;
+  $api_categories_detail = $api_url . '/categories/detail.php?cat_id=' . $cat_id;
   $json_detail = @file_get_contents($api_categories_detail);
 
 
@@ -77,18 +77,18 @@ if (!empty($cat_name)) {
   $result = isset($arr_detail['result']) ? $arr_detail['result'] : array();
   ?>
 
-  <p><a href="kategori.php">&laquo; Back</a> | <a href="kategori-edit.php?cat_id=<?php echo $result['cat_id']; ?>">Reload</a></p>
+  <p><a href="categories.php">&laquo; Back</a> | <a href="categories-edit.php?cat_id=<?php echo $result['cat_id']; ?>">Reload</a></p>
 
   <form method="POST" action="">
     <input type="hidden" name="cat_id" value="<?php echo $result['cat_id']; ?>" />
     <table border="1">
       <tr>
-        <td>Nama Kategori</td>
+        <td>Nama categories</td>
         <td>:</td>
         <td><input type="text" name="cat_name" size="50" value="<?php echo $result['cat_name']; ?>"></td>
       </tr>
       <tr>
-        <td>Keterangan Kategori</td>
+        <td>Keterangan categories</td>
         <td>:</td>
         <td><input type="text" name="cat_description" size="50" value="<?php echo $result['cat_description']; ?>"></td>
       </tr>

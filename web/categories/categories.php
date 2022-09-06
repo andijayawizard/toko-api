@@ -12,7 +12,7 @@ include '../inc.php';
   function deleteData(cat_id) {
     var cfm = confirm("Apakah anda yakin akan menghapus data ini?");
     if (cfm) {
-      window.location.href = 'kategori-delete.php?cat_id=' + cat_id;
+      window.location.href = 'categories-delete.php?cat_id=' + cat_id;
     }
   }
 </script>
@@ -37,11 +37,11 @@ include '../inc.php';
   ?>
 
   <p>
-    <a href="../categories/kategori.php">categories</a> | 
+    <a href="../categories/categories.php">categories</a> | 
     <a href="../kategori/kategori.php">kategori</a> | 
-    <a href="../produk/kategori.php">produk</a>
+    <a href="../produk/produk.php">produk</a>
   </p>
-  <p><a href="kategori-add.php">Add New</a> | <a href="kategori.php">Reload</a></p>
+  <p><a href="categories-add.php">Add New</a> | <a href="categories.php">Reload</a></p>
 
   <table border="1">
     <tr>
@@ -60,7 +60,7 @@ include '../inc.php';
     foreach ($result as $arr) {
       $no++;
 
-      $link_edit = '<a href="kategori-edit.php?cat_id=' . $arr['cat_id'] . '">[Edit]</a>';
+      $link_edit = '<a href="categories-edit.php?cat_id=' . $arr['cat_id'] . '">[Edit]</a>';
       $link_delete = '<a href="javascript:void:;" onclick="deleteData(\'' . $arr['cat_id'] . '\')">[Delete]</a>';
 
     ?>

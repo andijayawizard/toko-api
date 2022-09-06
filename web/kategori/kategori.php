@@ -37,8 +37,8 @@ include '../inc.php';
   ?>
 
   <p>
-    <!-- <a href="../categories/kategori.php">categories</a> | -->
-    <a href="../kategori/kategori.php">kategori</a> |
+    <a href="../categories/categories.php">categories</a> | 
+    <a href="../kategori/kategori.php">kategori</a> | 
     <a href="../produk/produk.php">produk</a>
   </p>
   <p><a href="kategori-add.php">Add New</a> | <a href="kategori.php">Reload</a></p>
@@ -60,15 +60,15 @@ include '../inc.php';
     foreach ($result as $arr) {
       $no++;
 
-      $link_edit = '<a href="kategori-edit.php?cat_id=' . $arr['idkat'] . '">[Edit]</a>';
-      $link_delete = '<a href="javascript:void:;" onclick="deleteData(\'' . $arr['idkat'] . '\')">[Delete]</a>';
+      $link_edit = '<a href="kategori-edit.php?cat_id=' . $arr['cat_id'] . '">[Edit]</a>';
+      $link_delete = '<a href="javascript:void:;" onclick="deleteData(\'' . $arr['cat_id'] . '\')">[Delete]</a>';
 
     ?>
       <tr>
         <td><?= $no; ?></td>
-        <td><?= $arr['nama']; ?></td>
+        <td><?= $arr['cat_name']; ?></td>
         <!-- <td><?= $arr['ket']; ?></td> -->
-        <td><?= $arr['gambar']; ?></td>
+        <td><?= $arr['cat_description']; ?></td>
         <!-- <td><?= date('d M Y H:i', strtotime($arr['cat_modified'])); ?></td> -->
         <td><?= $link_edit . ' ' . $link_delete; ?></td>
       </tr>

@@ -2,5 +2,5 @@
 [SQL]
 host = 127.0.0.1
 user = root
-password = '!@12QWaszx'
+password = '!@#123QWEasdzxc'
 dbname = db_toko

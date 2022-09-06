@@ -1,28 +1,17 @@
 <?php
 include '../inc.php';
 
-$cat_id = isset($_GET['cat_id']) ? (int) $_GET['cat_id'] : 0;
-
-if (empty($cat_id)) {
-  header('location:kategori.php');
-  exit();
-}
-
 $cat_name = isset($_POST['cat_name']) ? $_POST['cat_name'] : '';
 
 if (!empty($cat_name)) {
   //proses submit ke API
 
-  $cat_id = isset($_POST['cat_id']) ? (int) $_POST['cat_id'] : '';
   $cat_description = isset($_POST['cat_description']) ? $_POST['cat_description'] : '';
-  $gambar = isset($_POST['gambar']) ? $_POST['gambar'] : '';
 
-  $url = $api_url . '/kategori/update.php';
+  $url = $api_url . '/categories/create.php';
   $postdata = array();
-  $postdata['cat_id'] = $cat_id;
   $postdata['cat_name'] = $cat_name;
   $postdata['cat_description'] = $cat_description;
-  $postdata['gambar'] = $gambar;
 
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, $url);
@@ -43,7 +32,7 @@ if (!empty($cat_name)) {
   $info = isset($arr_response['info']) ? $arr_response['info'] : 'error';
   $msg = isset($arr_response['msg']) ? $arr_response['msg'] : 'tidak diketahui';
 
-  header('location:kategori-edit.php?cat_id=' . $cat_id . '&info=' . $info . '&msg=' . $msg);
+  header('location:categories-add.php?info=' . $info . '&msg=' . $msg);
   exit();
 }
 ?>
@@ -52,11 +41,11 @@ if (!empty($cat_name)) {
 
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>Edit Kategori</title>
+  <title>Add categories</title>
 </head>
 
 <body>
-  <h1>Edit Kategori</h1>
+  <h1>Add categories</h1>
 
   <?php
   $info = isset($_GET['info']) ? $_GET['info'] : '';
@@ -67,36 +56,22 @@ if (!empty($cat_name)) {
     echo '<br />Msg: ' . $msg;
     echo '<br />';
   }
-
-
-  $api_categories_detail = $api_url . '/kategori/detail.php?cat_id=' . $cat_id;
-  $json_detail = @file_get_contents($api_categories_detail);
-
-
-  $arr_detail = json_decode($json_detail, true);
-  $result = isset($arr_detail['result']) ? $arr_detail['result'] : array();
   ?>
 
-  <p><a href="kategori.php">&laquo; Back</a> | <a href="kategori-edit.php?cat_id=<?php echo $result['cat_id']; ?>">Reload</a></p>
+  <p><a href="categories.php">&laquo; Back</a> | <a href="categories-add.php">Reload</a></p>
 
   <form method="POST" action="">
-    <input type="hidden" name="cat_id" value="<?php echo $result['cat_id']; ?>" />
     <table border="1">
       <tr>
-        <td>Nama Kategori</td>
+        <td>Nama categories</td>
         <td>:</td>
-        <td><input type="text" name="cat_name" size="50" value="<?php echo $result['cat_name']; ?>"></td>
+        <td><input type="text" name="cat_name" size="50"></td>
       </tr>
       <tr>
-        <td>Keterangan Kategori</td>
+        <td>Keterangan categories</td>
         <td>:</td>
-        <td><input type="text" name="cat_description" size="50" value="<?php echo $result['cat_description']; ?>"></td>
+        <td><input type="text" name="cat_description" size="50"></td>
       </tr>
-      <!-- <tr>
-        <td>Gambar</td>
-        <td>:</td>
-        <td><input type="text" name="gambar" size="50" value="<?php echo $result['gambar']; ?>"></td>
-      </tr> -->
     </table>
 
     <p>

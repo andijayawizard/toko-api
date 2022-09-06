@@ -18,10 +18,10 @@ if (empty($cat_name)) {
 }
 
 $datas = array();
-$datas['nama'] = $cat_name;
-$datas['ket'] = $cat_description;
-// $datas['cat_created'] = date('Y-m-d H:i:s');
-// $datas['cat_modified'] = date('Y-m-d H:i:s');
+$datas['cat_name'] = $cat_name;
+$datas['cat_description'] = $cat_description;
+$datas['cat_created'] = date('Y-m-d H:i:s');
+$datas['cat_modified'] = date('Y-m-d H:i:s');
 
 $exec = $db->insert('kategori', $datas);
 

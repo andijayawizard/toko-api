@@ -17,8 +17,8 @@ if (!empty($nama_pro)) {
   $sql_name = ' where nama_pro LIKE \'%' . $nama_pro . '%\' ';
 }
 
-// $cat_list = $db->query('select * from produk ' . $sql_name . ' ' . $sql_limit);
-$cat_list = $db->query('select * from produk inner join kategori where produk.idkat=kategori.idkat ' . $sql_limit) or die(mysqli_error($db));
+$cat_list = $db->query('SELECT * from produk ' . $sql_name . ' ' . $sql_limit);
+// $cat_list = $db->query('SELECT * from produk inner join kategori where produk.idkat=kategori.idkat ' . $sql_limit) or die(mysqli_error($db));
 
 $arr = array();
 $arr['info'] = 'success';
